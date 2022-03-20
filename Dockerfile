@@ -3,6 +3,12 @@ LABEL maintainer="Adam Austin"
 
 ENV PYTHONUNBUFFERED 1
 
+# Setup venv
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+
+# Install Dependancies
 COPY ./requirements.txt /requirements.txt
 RUN pip install -r requirements.txt
 
